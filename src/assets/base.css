@@ -1,0 +1,14 @@
+/* color palette from <https://github.com/vuejs/theme> */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400&family=Open+Sans&family=Roboto+Flex:opsz,wght@8..144,200;8..144,300&family=Roboto:wght@300&display=swap');
+
+body {
+  font-family: 'Lexend', 'Roboto Flex', sans-serif;
+  min-height: 100vh;
+  color: #FFFAFB;
+  background: #131315;
+  line-height: 1.6;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
