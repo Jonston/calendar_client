@@ -1,0 +1,33 @@
+.vue-notification-group {
+  font-family: Roboto, sans-serif;
+  width: 400px !important;
+}
+
+.notification-title {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.vue-notification {
+  background: #a8d5fe !important;
+  border-left-color: #4f99e6 !important;
+  color: #1a5da4 !important;
+}
+
+.vue-notification.warn {
+  background: #ffdaa1 !important;
+  border-left-color: #e5a34c !important;
+  color: #a46206 !important;
+}
+
+.vue-notification.error {
+  background: #ffbab6 !important;
+  border-left-color: #ff6862 !important;
+  color: #ae3f36 !important;
+}
+
+.vue-notification.success {
+  background: #a8eebf !important;
+  border-left-color: #65bf7f !important;
+  color: #167435 !important;
+}

@@ -1,11 +1,22 @@
-import './assets/main.css'
+import './assets/main.css';
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import axios from 'axios';
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.baseURL = 'http://localhost:8000';
+window.axios = axios;
 
-const app = createApp(App)
+import App from './App.vue';
 
-app.use(router)
+import { createApp } from 'vue';
+const app = createApp(App);
 
-app.mount('#app')
+import store from './store/index';
+app.use(store);
+
+import router from './router';
+app.use(router);
+
+import Notifications from '@kyvg/vue3-notification'
+app.use(Notifications);
+
+app.mount('#app');

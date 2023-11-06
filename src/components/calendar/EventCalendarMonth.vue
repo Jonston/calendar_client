@@ -1,5 +1,5 @@
 <template>
-  <div class="month">
+  <div class="month" ref="element">
     <div class="month__header">
       {{ date.format("MMMM") }}
     </div>
@@ -13,41 +13,50 @@
         <div class="month__week month__week--large" v-for="(week, index) in weeks" :key="index">
           <EventCalendarDay
             class="month__week__day"
+            @select-date="onSelectDate"
             v-for="day in week"
             :key="day"
-            :month="date.month()"
+            :year="date.year()"
+            :month="date.month() + 1"
             :day="day"
           />
         </div>
       </div>
     </div>
+    <Spinner :loading="isLoading" />
   </div>
 </template>
 
 <script>
 import moment from 'moment';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, toRef } from 'vue';
 import EventCalendarDay from './EventCalendarDay.vue';
+import Spinner from "@/components/spinner/Spinner.vue";
 export default {
   name: 'EventCalendarMonth',
   components: {
+    Spinner,
     EventCalendarDay
   },
   props: {
-    month: {
-      type: Number,
-      required: true
-    },
     year: {
       type: Number,
       required: true
     },
-    events: {
-      type: Array,
+    month: {
+      type: Number,
       required: true
+    },
+    isLoading: {
+      type: Boolean,
+      default: true
     }
   },
-  setup(props) {
+  setup(props, { emit }) {
+
+    const element = ref(null);
+
+    const isLoading = toRef(props, 'isLoading');
 
     const date = moment().set({
       year: props.year,
@@ -78,11 +87,24 @@ export default {
       return weeks;
     }
 
-    onMounted(() => {
+    const onSelectDate = ({day, dayElement}) => {
+      const monthElement = element.value;
+
+      emit('select-date', {
+        day,
+        monthElement,
+        dayElement
+      });
+    }
+
+    onMounted(async () => {
       weeks.value = getWeeks();
     });
 
     return {
+      onSelectDate,
+      element,
+      isLoading,
       date,
       daysOFWeek,
       weeks,
@@ -93,6 +115,7 @@ export default {
 
 <style lang="scss" scoped>
 .month {
+  position: relative;
   width: 360px;
   padding: 15px 0;
   &__header {
@@ -120,7 +143,7 @@ export default {
       flex: 1;
       &--named {
         margin-top: 0;
-        /* Да простит меня дизайнер.Обещаю на проде так не делать.*/
+        /* Да простит меня дядя Бобби за столь дерзкий поступок. */
         color: #d2d0b7;
       }
     }

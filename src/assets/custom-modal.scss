@@ -1,0 +1,34 @@
+.calendar-modal {
+  font-family: 'Lexend', 'Roboto Flex', sans-serif !important;
+  box-sizing: border-box;
+  .modal-dialog {
+    max-width: 532px;
+    .modal-content {
+      padding: 20px;
+      border-radius: 0;
+      background-color: #131315;
+      .modal-header {
+        padding: 0 0 20px 0;
+        border-bottom: 1px solid rgba(255, 78, 107, 0.25);
+        .modal-title {
+          font-weight: 100;
+          font-size: 24px;
+          line-height: 24px;
+        }
+        .calendar-modal-btn-close {
+          border: none;
+          background-color: transparent;
+          color: #FF4E6B;
+        }
+      }
+      .modal-body {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.modal-backdrop {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(1px);
+}
