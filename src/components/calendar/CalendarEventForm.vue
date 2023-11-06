@@ -56,7 +56,6 @@
       </button>
     </div>
   </form>
-  <notifications :group="'notify'" :duration="5000"></notifications>
 </template>
 
 <script>
