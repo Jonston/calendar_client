@@ -61,8 +61,6 @@ import CalendarModal  from "./CalendarModal.vue";
 import CalendarEventForm from "./CalendarEventForm.vue";
 import CalendarEventList from "./CalendarEventList.vue";
 
-import { useNotification } from "@kyvg/vue3-notification";
-
 import moment from 'moment';
 import { onMounted, ref} from "vue";
 import { useStore } from "vuex";
@@ -104,16 +102,6 @@ export default {
       width: 0,
       height: 'auto'
     });
-
-    const { notify } = useNotification();
-
-    setTimeout(() => {
-      notify({
-        group: 'notify',
-        type: 'success',
-        title: 'Event saved successfully!',
-      });
-    }, 2000);
 
     const modal = ref(null);
 
