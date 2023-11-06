@@ -2,7 +2,7 @@ import './assets/main.css';
 
 import axios from 'axios';
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.baseURL = 'https://server.codemaster.com.ua';
 window.axios = axios;
 
 import App from './App.vue';
